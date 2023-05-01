@@ -1,5 +1,6 @@
 import Store from './modules/store.js';
 import Book from './modules/book.js';
+import { DateTime } from "./node_modules/luxon/src/luxon.js";
 
 
 class UI {
@@ -59,6 +60,13 @@ const bookList = document.getElementById('book-list');
 bookList.addEventListener('click', (e) => {
   UI.removeBook(e.target);
 });
+setInterval(()=>{
+    const date = DateTime.now();
+    document.querySelector('#date').innerHTML = date.toLocaleString(
+        DateTime.DATETIME_MED,
+    );
+},1000)
+
 
 const list = document.getElementById('list');
 list.addEventListener('click', (e) => {
